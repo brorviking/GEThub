@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Sound</title>
+
+    <style>
+        body {
+            background: rgb(124, 125, 165);
+            background-attachment: fixed;
+            font-family: Trebuchet MS;
+            color: rgb(22, 36, 36);
+            padding: 0;
+            margin: 0;
+            padding-top: 50px;
+        }
+
+        .page {
+            background-color: rgb(226, 224, 224);
+            border-radius: 10px;
+            padding: 10px;
+            max-width: 600px;
+            min-height: 300px;
+            margin: 0 auto;
+            text-align: center;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+
+        button.pickme {
+            outline: none;
+            background-color: #312244;
+            border: none;
+            border-radius: 10px;
+            width: 120px;
+            height: 50px;
+            color: white;
+            transition-duration: 0.2s;
+            padding: 8px 12px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 20px;
+            margin: 10px 10px;
+            cursor: pointer;
+            border: 2px solid;
+            border-color: #312244;
+            box-shadow: 0 5px #999;
+        }
+
+        button.pickme:hover {
+            background-color: #e7e7e7;
+            color: rgb(22, 36, 36);
+
+        }
+
+        button.pickme:active {
+            box-shadow: 0 1px #666;
+            transform: translateY(4px);
+        }
+
+        .result {
+            background-color: snow;
+            border-radius: 10px;
+            padding: 10px;
+            max-width: 600px;
+            min-height: 50px;
+            margin: auto;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <audio id="Audio1">
+        <source src="bubbles.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    <audio id="Audio2">
+        <source src="confetti.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    <audio id="Audio3">
+        <source src="clay.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    <audio id="Audio4">
+        <source src="glimmer.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    <audio id="Audio5">
+        <source src="moon.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    <audio id="Audio6">
+        <source src="ufo.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+
+    <div class="page">
+        <h3>Sound</h3>
+
+        <div id='app'></div>
+
+
+    </div>
+
+    <script>
+
+        //Model
+        var x = document.getElementById("Audio1"); 
+        var x2 = document.getElementById("Audio2"); 
+        var x3 = document.getElementById("Audio3"); 
+        var x4 = document.getElementById("Audio4"); 
+        var x5 = document.getElementById("Audio5"); 
+        var x6 = document.getElementById("Audio6"); 
+
+
+        //View
+        updateView();
+        function updateView() {
+            document.getElementById("app").innerHTML = `
+            <button id="Sound1" class="pickme" onclick='playSound1()'>Sound 1</button>
+            <button id="Sound2" class="pickme" onclick='playSound2()'>Sound 2</button>
+            <br> <button id="Sound3" class="pickme" onclick='playSound3()'>Sound 3</button>
+            <button id="Sound4" class="pickme" onclick='playSound4()'>Sound 4</button>
+            <br> <button id="Sound5" class="pickme" onclick='playSound5()'>Sound 5</button>
+            <button id="Sound6" class="pickme" onclick='playSound6()'>Sound 6</button>
+        `};
+
+        //Controller
+        function playSound1() { 
+         x.play(); 
+            } 
+        function playSound2() { 
+         x2.play(); 
+            } 
+        function playSound3() { 
+         x3.play(); 
+            } 
+        function playSound4() { 
+         x4.play(); 
+            } 
+        function playSound5() { 
+         x5.play(); 
+            } 
+        function playSound6() { 
+         x6.play(); 
+            } 
+
+
+    </script>
+</body>
+
+</html>
