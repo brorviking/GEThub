@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Human VS Computer</title>
+
+    <style>
+        body {
+            background: aliceblue;
+            background-attachment: fixed;
+            font-family: Trebuchet MS;
+            color: rgb(22, 36, 36);
+            padding: 0;
+            margin: 0;
+            padding-top: 50px;
+
+        }
+
+        .page {
+            background-color: snow;
+            border-radius: 10px;
+            padding: 10px;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+
+        button.pickme {
+            outline: none;
+            background-color: #496463;
+            border: none;
+            border-radius: 10px;
+            width: 120px;
+            height: 50px;
+            color: white;
+            transition-duration: 0.2s;
+            padding: 8px 12px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 20px;
+            margin: 10px 10px;
+            cursor: pointer;
+            border: 2px solid;
+            border-color: #496463;
+            box-shadow: 0 5px #999;
+        }
+
+        button.pickme:hover {
+            background-color: #e7e7e7;
+            color: rgb(22, 36, 36);
+
+        }
+
+        button.pickme:active {
+    
+            box-shadow: 0 1px #666;
+            transform: translateY(4px);
+        }
+
+        .result {
+            background-color: snow;
+            border-radius: 10px;
+            padding: 10px;
+            max-width: 600px;
+            min-height: 50px;
+            margin: auto;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="page">    
+        <h3>Computer VS Human</h3>
+
+        <div id='app'></div>
+    
+    </div>
+
+    <script>
+
+        //Model
+
+        let PlayerHealth = 100;
+        let ComputerHealth = 200;
+        let PCattackValue;
+        let PlayerCritical;
+        let thisIsTheWinner = "";
+        let disButton = ""
+
+        //View
+        updateView();
+        function updateView() {
+            document.getElementById("app").innerHTML = `
+            <button ${disButton} id="playAttack" class="pickme" onclick='playerAttack()'>Attack</button>
+            
+            <div class="result">
+            <div> Human's HP: ${PlayerHealth} <br/> Computers HP: ${ComputerHealth}</div> 
+            <div> <br/> ${thisIsTheWinner} </div></div>
+        `};
+
+        //Controller
+        function playerAttack() {
+            if (PlayerHealth ==0 || ComputerHealth ==0) {
+                disButton = "disabled";
+                            } 
+                            else {
+
+            PCattackValue = Math.floor(Math.random()*11);
+            PlayerCritical = Math.random();
+            console.log(PCattackValue + " <-- player attack Value");
+            console.log(PlayerCritical + " <-- player attack critical value");
+            
+            if (PlayerCritical>=0.7) {
+                PCattackValue +=10
+            }
+            console.log(PCattackValue + " <-- player attack value, after crit calc");
+            ComputerHealth -=PCattackValue;
+
+            if (ComputerHealth<=0) {
+                ComputerHealth=0;
+                thisIsTheWinner="You Win"
+            }
+            NPCattackValue = Math.floor(Math.random()*9);
+            console.log(NPCattackValue + " <-- NPC attack Value");
+
+            PlayerHealth -=NPCattackValue;
+
+            if (PlayerHealth<=0) {
+                PlayerHealth=0;
+                thisIsTheWinner="Computer Win"
+            }
+        }
+
+
+ 
+            // Kaller på viewet for å se endringer.
+            updateView();
+        };
+
+
+    </script>
+</body>
+
+</html>
